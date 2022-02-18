@@ -16,10 +16,7 @@ Android Pokemon
 
 Architecture
 -----------
-
 ![Architecture](screenshots/architecture.png "Architecture")
-
-
 Screenshots (not dark)
 -----------
 
