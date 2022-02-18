@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Pokemon</string>
+    <string name="pokemons">Pokemons</string>
+    <string name="details">Details</string>
+    <string name="type">Type</string>
+    <string name="abilities">Abilities</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="retry">Retry</string>
+    <string name="pokemon_image">Pokemon Image</string>
+
+    <!-- Accessibility -->
+    <string name="pokemon_item_image">Picture of Pokemon %s</string>
+</resources>

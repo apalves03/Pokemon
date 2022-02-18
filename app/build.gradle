@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+
+    compileSdk rootProject.compileSdkVersion
+    buildFeatures {
+        dataBinding true
+    }
+    defaultConfig {
+        applicationId "com.apalves03.pokemon"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        testInstrumentationRunner "com.apalves03.pokemon.utilities.MainTestRunner"
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    packagingOptions {
+        // Multiple dependency bring these files in. Exclude them to enable
+        // our test APK to build (has no effect on our AARs)
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
+    }
+
+    sourceSets {
+        test.resources.srcDirs += 'src/test/res'
+    }
+
+    hilt {
+        enableTransformForLocalTests = true
+    }
+}
+
+dependencies {
+
+    // App dependencies
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+
+    // Architecture Components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.pagingVersion"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshiVersion"
+
+    // Retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+
+    // Coil
+    implementation "io.coil-kt:coil:$rootProject.coilVersion"
+    implementation 'com.google.ar:core:1.23.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    // MockwebserverMockWebServer
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.mockWebServerVersion"
+
+    // Hilt
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+
+    // Hilt testing
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+    kaptTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$rootProject.hiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$rootProject.hiltVersion"
+
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:$rootProject.junitVersion"
+
+    // Dependencies for Android unit tests
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
+
+    // AndroidX Test - JVM testing
+    debugImplementation "androidx.fragment:fragment-testing:$rootProject.fragmentVersion"
+
+    // AndroidX Test - Instrumented testing
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
+    androidTestImplementation "androidx.test:core-ktx:$rootProject.ktxVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+}
